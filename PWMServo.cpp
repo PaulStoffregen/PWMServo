@@ -199,8 +199,16 @@ void PWMServo::write(int angleArg)
 	//uint32_t duty = (int)(usec / 20000.0f * 4096.0f);
 	//Serial.printf("angle=%d, usec=%.2f, us=%.2f, duty=%d, min=%d, max=%d\n",
 		//angle, usec, (float)us / 256.0f, duty, min16<<4, max16<<4);
+#if TEENSYDUINO >= 137
+	noInterrupts();
+	uint32_t oldres = analogWriteResolution(12);
+	analogWrite(pin, duty);
+	analogWriteResolution(oldres);
+	interrupts();
+#else
 	analogWriteResolution(12);
 	analogWrite(pin, duty);
+#endif
 }
 
 uint8_t PWMServo::attached()
