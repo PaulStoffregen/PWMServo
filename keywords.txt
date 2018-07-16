@@ -21,6 +21,6 @@ attached	KEYWORD2
 #######################################
 # Constants (LITERAL1)
 #######################################
-SERVO_PIN_A LITERAL1
-SERVO_PIN_B LITERAL1
-SERVO_PIN_C LITERAL1
+SERVO_PIN_A	LITERAL1
+SERVO_PIN_B	LITERAL1
+SERVO_PIN_C	LITERAL1
