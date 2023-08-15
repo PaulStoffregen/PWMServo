@@ -53,6 +53,12 @@
   #define SERVO_PIN_B 10
   // all PWM pins supported, but names not defined here...
   // just use the actual PWM pin number with attach()
+#elif defined(ARDUINO_UNOR4_WIFI) || defined(ARDUINO_UNOR4_MINIMA)
+  #include <pwm.h>
+  #define SERVO_PIN_A 9
+  #define SERVO_PIN_B 10
+  // all PWM pins supported, but names not defined here...
+  // just use the actual PWM pin number with attach()
 #else
   #define SERVO_PIN_A 9
   #define SERVO_PIN_B 10
@@ -75,6 +81,9 @@ class PWMServo
     #endif
 #elif defined(__arm__) && defined(TEENSYDUINO)
     static uint32_t attachedpins[]; // 1 bit per digital pin
+#elif defined(ARDUINO_UNOR4_WIFI) || defined(ARDUINO_UNOR4_MINIMA)
+    static uint32_t attachedpins[]; // 1 bit per digital pin
+    PwmOut *pwmOut = nullptr;
 #endif
   public:
     PWMServo();
